@@ -29,6 +29,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.vAndroidx"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.vConstraintLayout"
     implementation "com.google.firebase:firebase-core:$rootProject.vFirebase"
+    implementation "com.google.firebase:firebase-database:$rootProject.vFirebaseDatabase"
     api "com.google.android.material:material:$rootProject.vMaterial"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
