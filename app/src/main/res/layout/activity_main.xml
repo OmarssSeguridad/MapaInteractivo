@@ -80,7 +80,8 @@
                     android:id="@+id/usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/usuario" />
+                    android:hint="@string/usuario"
+                    android:text="omar.blanco@8w.com.mx" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +100,9 @@
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Contraseña" />
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:text="123456" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 

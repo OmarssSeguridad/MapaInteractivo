@@ -28,20 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-
             case R.id.ingresar:
                 EditText correo = findViewById(R.id.usuario);
                 EditText contraseña = findViewById(R.id.pass);
 
                 String valorCorreo = correo.getText().toString();
                 String valorContraseña = contraseña.getText().toString();
-                String usuario,pass;
 
 
                 if ((valorCorreo.equals("omar.blanco@8w.com.mx") || valorCorreo.equals("lourdesvega21@hotmail.com") || valorCorreo.equals("djdaan86@gmail.com ")) && valorContraseña.equals("123456")) {
-                    //intent = new Intent(view.getContext(), MenuActivity.class);
-                    usuario= correo.getText().toString();
-                    pass= contraseña.getText().toString();
+                    intent = new Intent(view.getContext(), MenuActivity.class);
+
 
                     startActivity(intent);
                     Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
@@ -50,9 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.nuevoUsuario:
+                Toast.makeText(this,"Nuevo Usuario", Toast.LENGTH_SHORT).show();
                 intent = new Intent(view.getContext(), Registro.class);
                 startActivity(intent);
-                Toast.makeText(this,"Nuevo Usuario", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.salir:
                 Toast.makeText(this, "Adios", Toast.LENGTH_SHORT).show();
