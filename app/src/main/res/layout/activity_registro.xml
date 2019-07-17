@@ -9,7 +9,7 @@
     tools:context=".Registro">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/material_button"
+        android:id="@+id/ingresar"
         android:layout_width="148dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
@@ -154,7 +154,6 @@
         app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
