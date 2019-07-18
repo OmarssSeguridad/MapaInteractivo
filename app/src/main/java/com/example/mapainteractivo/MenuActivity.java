@@ -80,8 +80,13 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.eventos) {
-            // Handle the camera action
+            setTitle("Crear Municipio");
+            EventosFragment fragmento = new EventosFragment();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
         } else if (id == R.id.edificios) {
+
 
         } else if (id == R.id.mapageneral) {
 
