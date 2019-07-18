@@ -80,21 +80,36 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.eventos) {
-            setTitle("Crear Municipio");
+            setTitle("Eventos Proximos");
             EventosFragment fragmento = new EventosFragment();
             androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contenedor,fragmento,"fragmento");
             transaction.commit();
-        } else if (id == R.id.edificios) {
 
+        } else if (id == R.id.edificios) {
+            setTitle("Edificios Intitucionales");
+            EdificiosFragment fragmento = new EdificiosFragment();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
         } else if (id == R.id.mapageneral) {
 
         }  else if (id == R.id.sincronizar) {
 
         }  else if (id == R.id.perfil) {
+            setTitle("Mi Perfil");
+            PerfilFragment fragmento = new PerfilFragment();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
         }  else if (id == R.id.version) {
+            setTitle("Version");
+            VersionFragment fragmento = new VersionFragment();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
         }  else if (id == R.id.acerca) {
 
