@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Intent intent;
 
@@ -38,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if ((valorCorreo.equals("omar.blanco@8w.com.mx") || valorCorreo.equals("lourdesvega21@hotmail.com") || valorCorreo.equals("djdaan86@gmail.com ")) && valorContraseña.equals("123456")) {
                     intent = new Intent(view.getContext(), MenuActivity.class);
-
-
                     startActivity(intent);
                     Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
                 } else {
