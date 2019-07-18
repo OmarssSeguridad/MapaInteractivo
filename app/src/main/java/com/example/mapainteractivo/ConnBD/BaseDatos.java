@@ -20,8 +20,8 @@ public class BaseDatos extends SQLiteOpenHelper {
                 "tipousuario text, matricula text)", "usuarios"));
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, nombre text, desc text, latitud real, longitud real, " +
                 "etiquetas text)", "edificios"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idEdificio integer, ruta text, desc text)", "fotos"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idEdificio integer, idEvento integer)","deteventos"));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idedificio integer, ruta text, desc text)", "fotos"));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idedificio integer, idevento integer)","deteventos"));
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, nombre text, desc text, fechai text, fechaf text)","eventos"));
 
     }

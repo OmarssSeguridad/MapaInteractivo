@@ -7,7 +7,7 @@ public class Edificios {
     private String desc;
     private double latitud;
     private double longitud;
-    private double etiquetas;
+    private String etiquetas;
 
     public Edificios(){
 
@@ -53,11 +53,11 @@ public class Edificios {
         this.longitud = longitud;
     }
 
-    public double getEtiquetas() {
+    public String getEtiquetas() {
         return etiquetas;
     }
 
-    public void setEtiquetas(double etiquetas) {
+    public void setEtiquetas(String etiquetas) {
         this.etiquetas = etiquetas;
     }
 }
