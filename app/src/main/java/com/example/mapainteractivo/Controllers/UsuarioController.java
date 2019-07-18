@@ -32,9 +32,9 @@ public class UsuarioController {
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
-    public int eliminarUsuario(int id) {
+    public int eliminarUsuario(String id) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = "+ id, null);
+        return baseDeDatos.delete(NOMBRE_TABLA, "id = '"+ id+"'", null);
     }
 
     public int guardarCambios(Usuarios usuario) {

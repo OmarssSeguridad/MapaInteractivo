@@ -32,9 +32,9 @@ public class EdificioController {
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
-    public int eliminarEdificio(int id) {
+    public int eliminarEdificio(String id) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = "+ id, null);
+        return baseDeDatos.delete(NOMBRE_TABLA, "id = '"+ id+"'", null);
     }
 
     public int guardarCambios(Edificios edificio) {

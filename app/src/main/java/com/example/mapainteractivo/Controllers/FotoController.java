@@ -30,9 +30,9 @@ public class FotoController {
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 
-    public int eliminarFoto(int id) {
+    public int eliminarFoto(String id) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = "+ id, null);
+        return baseDeDatos.delete(NOMBRE_TABLA, "id = '"+ id+"'", null);
     }
 
     public int guardarCambios(Fotos foto) {
