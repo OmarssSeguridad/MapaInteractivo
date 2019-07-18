@@ -2,7 +2,7 @@ package com.example.mapainteractivo.Modelos;
 
 public class Usuarios {
 
-    private int id;
+    private String id;
     private String nombre;
     private String contrasenia;
     private String tipoUsuario;
@@ -28,11 +28,11 @@ public class Usuarios {
     public Usuarios() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

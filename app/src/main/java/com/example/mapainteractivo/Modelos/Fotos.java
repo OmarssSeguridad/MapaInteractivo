@@ -1,8 +1,8 @@
 package com.example.mapainteractivo.Modelos;
 
 public class Fotos {
-    private int id;
-    private int idEdificio;
+    private String id;
+    private String idEdificio;
     private String ruta;
     private String desc;
 
@@ -10,19 +10,19 @@ public class Fotos {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getIdEdificio() {
+    public String getIdEdificio() {
         return idEdificio;
     }
 
-    public void setIdEdificio(int idEdificio) {
+    public void setIdEdificio(String idEdificio) {
         this.idEdificio = idEdificio;
     }
 
