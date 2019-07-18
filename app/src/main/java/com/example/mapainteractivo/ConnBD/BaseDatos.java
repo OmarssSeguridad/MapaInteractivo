@@ -16,13 +16,13 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, nombre text, usuario text, contrasenia text, " +
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, nombre text, usuario text, contrasenia text, " +
                 "tipousuario text, matricula text)", "usuarios"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, nombre text, desc text, latitud real, longitud real, " +
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, nombre text, desc text, latitud real, longitud real, " +
                 "etiquetas text)", "edificios"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idedificio integer, ruta text, desc text)", "fotos"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, idedificio integer, idevento integer)","deteventos"));
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id integer primary key, nombre text, desc text, fechai text, fechaf text)","eventos"));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, idedificio integer, ruta text, desc text)", "fotos"));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, idedificio integer, idevento integer)","deteventos"));
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, nombre text, desc text, fechai text, fechaf text)","eventos"));
 
     }
 
