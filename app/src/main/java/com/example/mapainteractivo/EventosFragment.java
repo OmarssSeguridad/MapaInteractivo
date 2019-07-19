@@ -3,21 +3,15 @@ package com.example.mapainteractivo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
+
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EventosFragment extends Fragment {
@@ -41,7 +35,6 @@ public class EventosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AgregarEventoFragment nuevoFragmento = new AgregarEventoFragment();
-
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.contenedor, nuevoFragmento);
                 transaction.addToBackStack(null);

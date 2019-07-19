@@ -38,8 +38,8 @@ public class AdapterEdificios extends RecyclerView.Adapter<AdapterEdificios.MyVi
         Edificios edificio = listaDeEdificios.get(i);
 
         // Obtener los datos de la lista
-       // String nombreEdificio = mascota.getNombre();
-       // int edadMascota = mascota.getEdad();
+        // String nombreEdificio = mascota.getNombre();
+        // int edadMascota = mascota.getEdad();
         // Y poner a los TextView los datos con setText
         myViewHolder.nombre.setText(edificio.getNombre());
         myViewHolder.descrip.setText(edificio.getDesc());
@@ -50,13 +50,13 @@ public class AdapterEdificios extends RecyclerView.Adapter<AdapterEdificios.MyVi
         return listaDeEdificios.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nombre, descrip;
+class MyViewHolder extends RecyclerView.ViewHolder {
+    TextView nombre, descrip;
 
-        MyViewHolder(View itemView) {
-            super(itemView);
-            this.nombre = itemView.findViewById(R.id.tvNombre);
-            this.descrip = itemView.findViewById(R.id.tvDescrip);
-        }
+    MyViewHolder(View itemView) {
+        super(itemView);
+        this.nombre = itemView.findViewById(R.id.tvNombre);
+        this.descrip = itemView.findViewById(R.id.tvDescrip);
     }
+}
 }

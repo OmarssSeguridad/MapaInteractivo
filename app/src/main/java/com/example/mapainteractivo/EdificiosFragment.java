@@ -25,7 +25,6 @@ public class EdificiosFragment extends Fragment {
     private RecyclerView recyclerView;
     private AdapterEdificios adaptadorEdificios;
     private EdificioController edificiosController;
-   // private FloatingActionButton fabAgregarMascota;
 
 
     public EdificiosFragment() {
