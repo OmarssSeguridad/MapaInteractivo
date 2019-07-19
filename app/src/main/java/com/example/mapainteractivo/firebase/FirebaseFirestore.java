@@ -9,6 +9,9 @@ public class FirebaseFirestore {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
+    public FirebaseFirestore() {
+    }
+
     public DatabaseReference getInstance() {
         if (myRef == null) {
             database = FirebaseDatabase.getInstance();

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/eventos"
+            android:icon="@drawable/ic_eventos"
+            android:title="Eventos" />
+        <item
+            android:id="@+id/edificios"
+            android:icon="@drawable/ic_edificios"
+            android:title="Edificios" />
+        <item
+            android:id="@+id/mapageneral"
+            android:icon="@drawable/ic_mapas"
+            android:title="Mapa General" />
+
+    </group>
+
+    <item android:title="Aplicacion">
+        <menu>
+            <item
+                android:id="@+id/sincronizar"
+                android:icon="@drawable/ic_sincronizar"
+                android:title="Sincronizar" />
+        </menu>
+    </item>
+    <item android:title="Datos">
+        <menu>
+            <item
+                android:id="@+id/perfil"
+                android:icon="@drawable/ic_perfil"
+                android:title="Mi Perfil" />
+            <item
+                android:id="@+id/version"
+                android:icon="@drawable/ic_version"
+                android:title="Version" />
+            <item
+                android:id="@+id/acerca"
+                android:icon="@drawable/ic_acercade"
+                android:title="Acerca de" />
+        </menu>
+    </item>
+
+</menu>
