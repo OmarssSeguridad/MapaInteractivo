@@ -64,9 +64,12 @@ public class EdificiosFragment extends Fragment {
             public void onClick(View view, int position) {
                 // Pasar a la actividad EditarMascotaActivity.java
                 Edificios edificioSeleccionado = listaDeEdificios.get(position);
-                Intent intent = new Intent(getContext(),MapsActivity.class);
-                //intent.putExtra("latitud", edificioSeleccionado.getLatitud());
-                //intent.putExtra("longitud", edificioSeleccionado.getLongitud());
+               Intent intent = new Intent(getContext(),MapsActivity.class);
+                intent.putExtra("latitud", edificioSeleccionado.getLatitud());
+                intent.putExtra("longitud", edificioSeleccionado.getLongitud());
+                intent.putExtra("edificio",edificioSeleccionado.getNombre());
+                intent.putExtra("id",edificioSeleccionado.getId());
+                intent.putExtra("desc",edificioSeleccionado.getDesc());
                 startActivity(intent);
             }
 

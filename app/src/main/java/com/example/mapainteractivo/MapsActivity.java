@@ -2,27 +2,62 @@ package com.example.mapainteractivo;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
 
+    private GoogleMap mMap;
+    Double latitud, longitud;
+    String edificio, idEdificio;
+    String desc;
+    Button btnfotos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        btnfotos = findViewById(R.id.btnfotos);
+        Bundle extras = getIntent().getExtras();
+        // Si no hay datos (cosa rara) salimos
+        if (extras == null) {
+            finish();
+            return;
+        }
+        // Instanciar el controlador de las mascotas
+
+        // Rearmar la mascota
+        // Nota: igualmente solamente podríamos mandar el id y recuperar la mascota de la BD
+        latitud = extras.getDouble("latitud");
+        longitud = extras.getDouble("longitud");
+        edificio = extras.getString("edificio");
+        desc = extras.getString("desc");
+        idEdificio = extras.getString("id");
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        btnfotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapsActivity.this,FotosEdificios.class);
+                intent.putExtra("idEdificio",edificio);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 
@@ -40,8 +75,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+
+        LatLng sydney = new LatLng(latitud, longitud);
+        CameraPosition cameraPosition = CameraPosition.builder().target(sydney).zoom(20).build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(edificio)).setSnippet(desc);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+
     }
 }
