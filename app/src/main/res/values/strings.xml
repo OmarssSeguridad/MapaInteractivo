@@ -28,4 +28,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="descripci_n">Descripción</string>
     <string name="nombre_edificio">Nombre edificio</string>
+    <string name="ver_fotos">Ver fotos</string>
 </resources>
