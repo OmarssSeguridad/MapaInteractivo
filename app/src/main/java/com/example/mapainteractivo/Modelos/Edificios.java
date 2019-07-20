@@ -2,22 +2,22 @@ package com.example.mapainteractivo.Modelos;
 
 public class Edificios {
 
-    private int id;
+    private String id;
     private String nombre;
     private String desc;
     private double latitud;
     private double longitud;
-    private double etiquetas;
+    private String etiquetas;
 
     public Edificios(){
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -53,11 +53,11 @@ public class Edificios {
         this.longitud = longitud;
     }
 
-    public double getEtiquetas() {
+    public String getEtiquetas() {
         return etiquetas;
     }
 
-    public void setEtiquetas(double etiquetas) {
+    public void setEtiquetas(String etiquetas) {
         this.etiquetas = etiquetas;
     }
 }

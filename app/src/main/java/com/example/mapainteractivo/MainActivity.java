@@ -46,13 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String valorContrasena = contrasena.getText().toString();
 
                 if ((valorCorreo.equals("omar.blanco@8w.com.mx") || valorCorreo.equals("lourdesvega21@hotmail.com") || valorCorreo.equals("djdaan86@gmail.com ")) && valorContrasena.equals("123456")) {
-//                    intent = new Intent(view.getContext(), MenuActivity.class);
-//                    startActivity(intent);
-                    user = new Usuarios();
-                    user.setUsuario(valorCorreo);
-                    user.setContrasenia(valorContrasena);
-
-                    myRef.setValue(user);
+                    intent = new Intent(view.getContext(), MenuActivity.class);
+                    startActivity(intent);
 
 //                    Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
                     Toast.makeText(this, "Registro agregado en Firebase.", Toast.LENGTH_SHORT).show();

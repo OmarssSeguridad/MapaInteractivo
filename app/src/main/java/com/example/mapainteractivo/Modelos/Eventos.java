@@ -1,7 +1,7 @@
 package com.example.mapainteractivo.Modelos;
 
 public class Eventos {
-    private int id;
+    private String id;
     private String nombre;
     private String desc;
     private String fechaI;
@@ -19,11 +19,11 @@ public class Eventos {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

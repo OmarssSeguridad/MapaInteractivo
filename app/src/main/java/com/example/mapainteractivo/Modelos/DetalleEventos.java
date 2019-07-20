@@ -1,9 +1,9 @@
 package com.example.mapainteractivo.Modelos;
 
 public class DetalleEventos {
-    private  int id;
-    private int idEdificio;
-    private int idEvento;
+    private String id;
+    private String idEdificio;
+    private String idEvento;
 
 
 
@@ -11,27 +11,27 @@ public class DetalleEventos {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getIdEdificio() {
+    public String getIdEdificio() {
         return idEdificio;
     }
 
-    public void setIdEdificio(int idEdificio) {
+    public void setIdEdificio(String idEdificio) {
         this.idEdificio = idEdificio;
     }
 
-    public int getIdEvento() {
+    public String getIdEvento() {
         return idEvento;
     }
 
-    public void setIdEvento(int idEvento) {
+    public void setIdEvento(String idEvento) {
         this.idEvento = idEvento;
     }
 }
