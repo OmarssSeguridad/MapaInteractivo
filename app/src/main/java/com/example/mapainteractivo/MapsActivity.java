@@ -28,7 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-       // btnfotos = findViewById(R.id.btnfotos);
+
         Bundle extras = getIntent().getExtras();
         // Si no hay datos (cosa rara) salimos
         if (extras == null) {
@@ -47,9 +47,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
-
-
 
     }
 

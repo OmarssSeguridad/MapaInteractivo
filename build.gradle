@@ -2,13 +2,14 @@
 
 buildscript {
     repositories {
-        google()
+        google() // Google's Maven repository.
         jcenter()
         
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
-        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.gms:google-services:4.2.0' // Google Service plugin.
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,9 +18,8 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+        google() // Google's Maven repository.
         jcenter()
-        
     }
 }
 
@@ -31,5 +31,7 @@ ext {
     vAndroidx = '1.0.2'
     vConstraintLayout = '1.1.3'
     vFirebase = '17.0.0'
+    vFirebaseDatabase = '18.0.0'
     vMaterial = '1.1.0-alpha08'
+    vMaps = '17.0.0'
 }

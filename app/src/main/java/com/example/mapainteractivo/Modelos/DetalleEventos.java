@@ -5,6 +5,8 @@ public class DetalleEventos {
     private String idEdificio;
     private String idEvento;
 
+
+
     public DetalleEventos(){
 
     }
