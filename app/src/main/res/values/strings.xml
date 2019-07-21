@@ -33,4 +33,7 @@
     <string name="fecha_fin">Fecha Fin</string>
     <string name="fecha_inicio">Fecha Inicio</string>
     <string name="nuevo_evento">Nuevo evento</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descripcion_del_evento">Descripción del evento</string>
 </resources>

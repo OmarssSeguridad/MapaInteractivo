@@ -28,15 +28,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     Button registrar;
     TextView regreso;
 
-    FirebaseDatabase myRef;
-    Usuarios usuario;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-
-        myRef = new FirebaseFirestore().getInstance();
 
         name = findViewById(R.id.registro_name);
         username = findViewById(R.id.registro_user);
@@ -65,7 +60,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 usuario.setTipoUsuario("0");
                 usuario.setMatricula(matricula);
 
-                //myRef.setValue(usuario);
                 Toast.makeText(this, "MenuActivity Principal", Toast.LENGTH_SHORT).show();
                 intent = new Intent((view.getContext()), Menu.class);
                 startActivity(intent);

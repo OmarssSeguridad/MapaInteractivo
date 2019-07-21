@@ -33,11 +33,7 @@ public class FirebaseFirestore {
     }
 
     public void insertNewEvent(Eventos evento) {
-        DatabaseReference myRef = getInstance().getReference().child("events").child(evento.getId());
-        myRef.setValue(evento.getNombre());
-        myRef.setValue(evento.getDesc());
-        myRef.setValue(evento.getFechaI());
-        myRef.setValue(evento.getFechaF());
+        getInstance().getReference().child("events").child(evento.getId()).setValue(evento);
     }
 
     public void insertNewUser(Usuarios usuario) {
