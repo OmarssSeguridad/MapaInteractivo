@@ -29,4 +29,7 @@
     <string name="descripci_n">Descripción</string>
     <string name="nombre_edificio">Nombre edificio</string>
     <string name="ver_fotos">Ver fotos</string>
+    <string name="nombre_evento">Nombre evento</string>
+    <string name="fecha_fin">Fecha Fin</string>
+    <string name="fecha_inicio">Fecha Inicio</string>
 </resources>
