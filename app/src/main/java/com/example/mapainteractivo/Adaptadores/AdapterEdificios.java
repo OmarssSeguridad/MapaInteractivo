@@ -16,7 +16,7 @@ import java.util.List;
 public class AdapterEdificios extends RecyclerView.Adapter<AdapterEdificios.MyViewHolder>{
     private List<Edificios> listaDeEdificios;
 
-    public void setListaDeMascotas(List<Edificios> listaDeEdificios) {
+    public void setListaDeEdificios(List<Edificios> listaDeEdificios) {
         this.listaDeEdificios = listaDeEdificios;
     }
 

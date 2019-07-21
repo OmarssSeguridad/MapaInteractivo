@@ -25,6 +25,8 @@ public class BaseDatos extends SQLiteOpenHelper {
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s(id text, nombre text, desc text, fechai text, fechaf text)","eventos"));
         //db.execSQL("INSERT INTO HIPOTECA(_id, hip_nombre) VALUES(7,'Banco Popular')");
 
+        db.execSQL(String.format("INSERT INTO eventos (id, nombre, desc, fechai, fechaf) VALUES ('1', 'Evento Prueba', 'Prueba', '21/10/2001', '21/10/2001')"));
+
         db.execSQL(String.format("INSERT INTO edificios (id, nombre, desc, latitud, longitud, etiquetas) VALUES ('1', 'Edificio T (Nuevo)', 'Aulas de Sistemas, TICs y laboratorios de redes.', 19.257016, -99.579539, '/edificios/T.jpg')"));
         db.execSQL(String.format("INSERT INTO edificios (id, nombre, desc, latitud, longitud, etiquetas) VALUES ('2', 'Edificio B-1', 'Centro de computo.', 19.257679, -99.580574, '/edificios/B1-1.jpg')"));
         db.execSQL(String.format("INSERT INTO edificios (id, nombre, desc, latitud, longitud, etiquetas) VALUES ('3', 'Edificio U', 'Aulas de Gestión y electrónica', 19.256826, -99.578848, '/edificios/U.jpg')"));

@@ -93,7 +93,7 @@ public class EdificiosFragment extends Fragment {
     public void refrescarListaDeEdificios() {
         if (adaptadorEdificios == null) return;
         listaDeEdificios = edificiosController.obtenerEdificios();
-        adaptadorEdificios.setListaDeMascotas(listaDeEdificios);
+        adaptadorEdificios.setListaDeEdificios(listaDeEdificios);
         adaptadorEdificios.notifyDataSetChanged();
     }
 

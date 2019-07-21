@@ -26,7 +26,7 @@ public class EventoController {
         ayudanteBaseDeDatos = new BaseDatos(contexto);
     }
 
-    public long  nuevoEvento(Eventos evento) {
+    public long nuevoEvento(Eventos evento) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
         ContentValues valoresParaInsertar = new ContentValues();
         valoresParaInsertar.put("id",evento.getId());
