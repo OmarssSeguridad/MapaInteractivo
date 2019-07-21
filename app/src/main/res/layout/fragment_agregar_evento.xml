@@ -13,15 +13,15 @@
         android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout4"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
+            android:id="@+id/eventos_tiNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nombreEvento"
+                android:id="@+id/eventos_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nombre_evento" />
@@ -29,83 +29,68 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout5"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
+            android:id="@+id/eventos_tiDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
+            app:layout_constraintTop_toBottomOf="@+id/eventos_tiNombre">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/descEvento"
+                android:id="@+id/eventos_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descripcion del Evento" />
+                android:hint="@string/descripcion_del_evento" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            android:id="@+id/fecIni"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text="Fecha Inicio"
+            android:id="@+id/eventos_fechaInicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:hint="@string/fecha_inicio"
+            app:layout_constraintEnd_toStartOf="@+id/eventos_fechaFin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+            app:layout_constraintTop_toBottomOf="@+id/eventos_tiDescripcion" />
 
         <EditText
-            android:id="@+id/fecFin"
-            android:layout_width="150sp"
-            android:layout_height="50sp"
+            android:id="@+id/eventos_fechaFin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:hint="@string/fecha_fin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/eventos_fechaInicio"
+            app:layout_constraintTop_toTopOf="@+id/eventos_fechaInicio" />
+
+        <Button
+            android:id="@+id/eventos_aceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text="Fecha Final"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.671"
-            app:layout_constraintStart_toEndOf="@+id/fecIni"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
-
-        <ListView
-            android:id="@+id/edificio"
-            android:layout_width="354dp"
-            android:layout_height="214dp"
-            android:layout_marginTop="52dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/aceptar"
+            android:textColor="#FFF"
+            android:background="@drawable/redonboton"
+            app:layout_constraintEnd_toStartOf="@+id/eventos_cancelar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fecIni" />
+            app:layout_constraintTop_toBottomOf="@+id/eventos_fechaFin" />
 
         <Button
-            android:id="@+id/btnAceptar"
-            android:layout_width="105dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="Aceptar"
-            app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
-            app:layout_constraintHorizontal_bias="0.016"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edificio" />
-
-        <Button
-            android:id="@+id/btnCancelar"
-            android:layout_width="105dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="72dp"
-            android:layout_marginRight="72dp"
-            android:text="Cancelar"
+            android:id="@+id/eventos_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:textColor="#FFF"
+            android:background="@drawable/redonboton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edificio" />
+            app:layout_constraintStart_toEndOf="@+id/eventos_aceptar"
+            app:layout_constraintTop_toTopOf="@+id/eventos_aceptar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>
