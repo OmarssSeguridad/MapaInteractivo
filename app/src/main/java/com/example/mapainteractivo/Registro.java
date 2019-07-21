@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.mapainteractivo.Modelos.Usuarios;
 import com.example.mapainteractivo.firebase.FirebaseFirestore;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,7 +28,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     Button registrar;
     TextView regreso;
 
-    DatabaseReference myRef;
+    FirebaseDatabase myRef;
     Usuarios usuario;
 
     @Override
@@ -64,7 +65,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                 usuario.setTipoUsuario("0");
                 usuario.setMatricula(matricula);
 
-                myRef.setValue(usuario);
+                //myRef.setValue(usuario);
                 Toast.makeText(this, "MenuActivity Principal", Toast.LENGTH_SHORT).show();
                 intent = new Intent((view.getContext()), Menu.class);
                 startActivity(intent);
