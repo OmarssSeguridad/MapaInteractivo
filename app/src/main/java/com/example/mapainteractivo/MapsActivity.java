@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -22,12 +23,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Double latitud, longitud;
     String edificio, idEdificio;
     String desc;
-    Button btnfotos;
+    FloatingActionButton btnfotos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        btnfotos = findViewById(R.id.btnfotos);
 
         Bundle extras = getIntent().getExtras();
         // Si no hay datos (cosa rara) salimos
@@ -44,6 +47,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         edificio = extras.getString("edificio");
         desc = extras.getString("desc");
         idEdificio = extras.getString("id");
+
+        btnfotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapsActivity.this,FotosEdificio.class);
+                intent.putExtra("id",idEdificio);
+                startActivity(intent);
+            }
+        });
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

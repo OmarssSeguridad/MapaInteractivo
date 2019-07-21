@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.mapainteractivo.Modelos.Usuarios;
 import com.example.mapainteractivo.firebase.FirebaseFirestore;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,8 +27,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     Button registrar;
     TextView regreso;
-
-    Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
