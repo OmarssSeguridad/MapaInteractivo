@@ -3,6 +3,7 @@ package com.example.mapainteractivo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mapainteractivo.Modelos.Usuarios;
-import com.example.mapainteractivo.firebase.FirebaseFirestore;
 import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        myRef = new FirebaseFirestore().getInstance();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button btnIng = findViewById(R.id.ingresar);
         btnIng.setOnClickListener(this);
@@ -49,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent = new Intent(view.getContext(), MenuActivity.class);
                     startActivity(intent);
 
-//                    Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(this, "Registro agregado en Firebase.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Usuario y/o Contraseña incorrecto", Toast.LENGTH_SHORT).show();
                 }

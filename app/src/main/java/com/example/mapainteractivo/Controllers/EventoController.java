@@ -8,10 +8,16 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.mapainteractivo.ConnBD.BaseDatos;
 import com.example.mapainteractivo.Modelos.Eventos;
 import com.example.mapainteractivo.Modelos.Fotos;
+import com.example.mapainteractivo.firebase.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class EventoController {
+
+    private FirebaseFirestore firestore = new FirebaseFirestore();
+    private DatabaseReference myRef;
 
     private BaseDatos ayudanteBaseDeDatos;
     private String NOMBRE_TABLA = "eventos";
@@ -28,6 +34,9 @@ public class EventoController {
         valoresParaInsertar.put("desc", evento.getDesc());
         valoresParaInsertar.put("fechai",evento.getFechaI());
         valoresParaInsertar.put("fechaf", evento.getFechaF());
+
+        firestore.insertNewEvent(evento);
+
         return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
     }
 

@@ -2,51 +2,49 @@ package com.example.mapainteractivo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.Button;
+
+
+import java.util.Objects;
 
 public class EventosFragment extends Fragment {
 
-    FloatingActionButton floatingActionButton;
+    private Button nuevo;
+    private Fragment fragment;
 
     public EventosFragment() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_eventos2, container, false);
-        floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        nuevo = view.findViewById(R.id.eventos_btnNuevo);
+        RecyclerView eventos = view.findViewById(R.id.eventos_rvEventos);
 
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AgregarEventoFragment nuevoFragmento = new AgregarEventoFragment();
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.contenedor, nuevoFragmento);
-                transaction.addToBackStack(null);
-                // Commit a la transacción
-                transaction.commit();
-
+        nuevo.setOnClickListener(v -> {
+            if (fragment == null) {
+                fragment = new AgregarEventoFragment();
             }
+
+            FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+            transaction.replace(R.id.contenedor, fragment);
+            transaction.addToBackStack(null);
+            // Commit a la transacción
+            transaction.commit();
         });
 
-
-
-
-
         return view;
-
     }
 }
 

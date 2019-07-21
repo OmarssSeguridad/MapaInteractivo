@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MapaInteractivo</string>
+    <string name="app_name">Mapa Interactivo</string>
     <string name="nombre_completo">Nombre completo</string>
     <string name="alumno">Alumno</string>
     <string name="profesor">Profesor</string>
@@ -29,4 +29,6 @@
     <string name="descripci_n">Descripción</string>
     <string name="nombre_edificio">Nombre edificio</string>
     <string name="ver_fotos">Ver fotos</string>
+    <string name="nuevo_evento">Nuevo evento</string>
+    <string name="nombre_evento">Nombre del evento</string>
 </resources>
