@@ -27,6 +27,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     Button registrar;
     TextView regreso;
+    Usuarios usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
