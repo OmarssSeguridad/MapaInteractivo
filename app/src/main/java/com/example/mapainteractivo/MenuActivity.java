@@ -15,6 +15,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import java.util.Objects;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +38,11 @@ public class MenuActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        setTitle("Eventos Próximos");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.contenedor, new EventosFragment(),"fragmento").addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -68,20 +77,16 @@ public class MenuActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragmento = null;
+        FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
 
         if (id == R.id.eventos) {
             setTitle("Eventos Proximos");
-            EventosFragment fragmento = new EventosFragment();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+            fragmento = new EventosFragment();
 
         } else if (id == R.id.edificios) {
             setTitle("Edificios Intitucionales");
-            EdificiosFragment fragmento = new EdificiosFragment();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+            fragmento = new EdificiosFragment();
 
         } else if (id == R.id.mapageneral) {
 
@@ -89,20 +94,19 @@ public class MenuActivity extends AppCompatActivity
 
         }  else if (id == R.id.perfil) {
             setTitle("Mi Perfil");
-            PerfilFragment fragmento = new PerfilFragment();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+            fragmento = new PerfilFragment();
 
         }  else if (id == R.id.version) {
             setTitle("Version");
-            VersionFragment fragmento = new VersionFragment();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+            fragmento = new VersionFragment();
 
         }  else if (id == R.id.acerca) {
 
+        }
+
+        if (fragmento != null) {
+            transaction.replace(R.id.contenedor, fragmento,"fragmento").addToBackStack(null);
+            transaction.commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

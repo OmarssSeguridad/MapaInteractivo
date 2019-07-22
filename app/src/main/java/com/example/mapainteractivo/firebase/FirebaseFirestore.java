@@ -10,6 +10,7 @@ public class FirebaseFirestore {
     // Write a message to the database
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private String childEvents = "events";
 
     public FirebaseFirestore() {
     }
@@ -32,24 +33,25 @@ public class FirebaseFirestore {
         return myRef;
     }
 
-    public void insertNewEvent(Eventos evento) {
-        getInstance().getReference().child("events").child(evento.getId()).setValue(evento);
+    public void insertUpdateEvent(Eventos evento) {
+        getInstance().getReference().child(childEvents).child(evento.getId()).setValue(evento);
+    }
+
+    public void deleteEvent(String id) {
+        getInstance().getReference().child(childEvents).child(id).removeValue();
     }
 
     public void insertNewUser(Usuarios usuario) {
-        DatabaseReference myRef;
-        if (usuario.getId().equals("0")) {
-            myRef = database.getReference("users/student/" + usuario.getId());
-        } else if (usuario.getId().equals("1")){
-            myRef = database.getReference("users/admin/" + usuario.getId());
+        String tipoUsuario;
+        if (usuario.getId().equals("1")) {
+            tipoUsuario = "admin";
         } else {
-            myRef = database.getReference("users/" + usuario.getId());
-            myRef.setValue(usuario.getTipoUsuario());
+            tipoUsuario = "student";
         }
-        myRef.setValue(usuario.getNombre());
-        myRef.setValue(usuario.getMatricula());
-        myRef.setValue(usuario.getContrasenia());
-        myRef.setValue(usuario.getMatricula());
+        getInstance().getReference().child("users")
+                .child(tipoUsuario)
+                .child(usuario.getId())
+                .setValue(usuario);
     }
 
 }

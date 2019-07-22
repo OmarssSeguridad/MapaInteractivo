@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +14,6 @@
         android:id="@+id/tvNombreEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/nombre_evento"
         android:textColor="@color/colorPrimaryDark"
@@ -27,8 +26,6 @@
         android:id="@+id/tvDescripEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/descripci_n"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,39 +33,33 @@
 
     <TextView
         android:id="@+id/tvFechaInicio"
-        android:layout_width="82dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/fecha_inicio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescripEvento" />
-
-    <TextView
-        android:id="@+id/tvFechaF"
-        android:layout_width="105dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/fecha_fin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        android:text="@string/fecha_inicio"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/tvDescripEvento" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="16dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@+id/tvFechaInicio"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescripEvento" />
+        app:layout_constraintEnd_toStartOf="@+id/tvFechaF"
+        app:layout_constraintTop_toTopOf="@+id/tvFechaInicio" />
+
+    <TextView
+        android:id="@+id/tvFechaF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/fecha_fin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvFechaInicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

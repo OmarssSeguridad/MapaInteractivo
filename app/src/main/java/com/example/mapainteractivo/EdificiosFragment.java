@@ -43,8 +43,6 @@ public class EdificiosFragment extends Fragment {
 
         // Instanciar vistas
         recyclerView = view.findViewById(R.id.rvEdificios);
-        // Boton flotante  fabAgregarMascota = findViewById(R.id.fabAgregarMascota);
-
 
         // Por defecto es una lista vacía,
         // se la ponemos al adaptador y configuramos el recyclerView

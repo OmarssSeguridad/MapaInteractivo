@@ -35,15 +35,21 @@ public class EventoController {
         valoresParaInsertar.put("fechai",evento.getFechaI());
         valoresParaInsertar.put("fechaf", evento.getFechaF());
 
-        firestore.insertNewEvent(evento);
-
-        return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
+        long r = baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
+        if (r != -1) {
+            firestore.insertUpdateEvent(evento);
+        }
+        return r;
     }
 
     public int eliminarEvento(String id) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
         baseDeDatos.delete("deteventos","idevento = '"+id+"'",null);
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = '"+ id+"'", null);
+        int r = baseDeDatos.delete(NOMBRE_TABLA, "id = '"+ id+"'", null);
+        if (r == 1) {
+            firestore.deleteEvent(id);
+        }
+        return r;
     }
 
     public int guardarCambios(Eventos evento) {
@@ -56,7 +62,12 @@ public class EventoController {
         // where id...
         String campoParaActualizar = "id = ?";
         String[] argumentosParaActualizar = {String.valueOf(evento.getId())};
-        return baseDeDatos.update(NOMBRE_TABLA, valoresParaInsertar, campoParaActualizar, argumentosParaActualizar);
+
+        int r = baseDeDatos.update(NOMBRE_TABLA, valoresParaInsertar, campoParaActualizar, argumentosParaActualizar);
+        if (r == 1) {
+            firestore.insertUpdateEvent(evento);
+        }
+        return r;
     }
 
     public ArrayList<Eventos> obtenerEventos() {

@@ -35,4 +35,5 @@ ext {
     vFirestore = '20.1.0'
     vMaterial = '1.1.0-alpha08'
     vMaps = '17.0.0'
+    vMultidex = '1.0.3'
 }
