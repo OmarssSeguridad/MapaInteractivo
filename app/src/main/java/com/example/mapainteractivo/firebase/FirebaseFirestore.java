@@ -15,8 +15,9 @@ public class FirebaseFirestore {
     public FirebaseFirestore() {
     }
 
-    public FirebaseDatabase getInstance() {
+    private FirebaseDatabase getInstance() {
         if (database == null) {
+//            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             database = FirebaseDatabase.getInstance();
         }
         return database;
@@ -25,6 +26,9 @@ public class FirebaseFirestore {
     public DatabaseReference getReference(String path)
     {
         myRef = getInstance().getReference(path);
+        if (!path.equals(".info/connected")) {
+//            myRef.keepSynced(true);
+        }
         return myRef;
     }
 

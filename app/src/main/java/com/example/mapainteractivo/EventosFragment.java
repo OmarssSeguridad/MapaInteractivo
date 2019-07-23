@@ -32,6 +32,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -47,7 +48,9 @@ public class EventosFragment extends Fragment {
     private AdapterEventos adaptadorEventos;
     private EventoController eventosController;
     private FirebaseFirestore firestore = new FirebaseFirestore();
+
     private DatabaseReference myRef;
+    private DatabaseReference connectedRef;
 
     private BaseDatos ayudanteBaseDeDatos;
     private String NOMBRE_TABLA = "eventos";
@@ -85,49 +88,47 @@ public class EventosFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adaptadorEventos);
         // Una vez que ya configuramos el RecyclerView le ponemos los datos de la BD
-        refrescarListaDeEventos();
 
-        myRef = firestore.getReference("events");
-        myRef.addChildEventListener(new ChildEventListener() {
+        refrescarListaDeEventos();
+        myRef = firestore.getReference("/events");
+        connectedRef = firestore.getReference(".info/connected");
+
+        connectedRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                listaDeEventos.clear();
-                ContentValues valoresParaInsertar = new ContentValues();
-                Eventos evento = dataSnapshot.getValue(Eventos.class);
-                if (evento != null) {
-                    valoresParaInsertar.put("id", evento.getId());
-                    valoresParaInsertar.put("nombre", evento.getNombre());
-                    valoresParaInsertar.put("desc", evento.getDesc());
-                    valoresParaInsertar.put("fechai",evento.getFechaI());
-                    valoresParaInsertar.put("fechaf", evento.getFechaF());
-                    baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+//                    Toast.makeText(getContext(), "Conectado a Internet", Toast.LENGTH_SHORT).show();
+                } else {
+//                    Toast.makeText(getContext(), "Desconectado de Internet", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                listaDeEventos.clear();
-                ContentValues valoresParaInsertar = new ContentValues();
-                Eventos evento = dataSnapshot.getValue(Eventos.class);
-                if (evento != null) {
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Eventos evento = postSnapshot.getValue(Eventos.class);
+
+                    ContentValues valoresParaInsertar = new ContentValues();
                     valoresParaInsertar.put("id", evento.getId());
                     valoresParaInsertar.put("nombre", evento.getNombre());
                     valoresParaInsertar.put("desc", evento.getDesc());
                     valoresParaInsertar.put("fechai",evento.getFechaI());
                     valoresParaInsertar.put("fechaf", evento.getFechaF());
                     String[] argumentos = {String.valueOf(evento.getId())};
-                    baseDeDatos.update(NOMBRE_TABLA, valoresParaInsertar, "id = ?", argumentos);
+                    int r = baseDeDatos.update(NOMBRE_TABLA, valoresParaInsertar, "id = ?", argumentos);
+                    if (r != 1) {
+                        baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
+                    }
+                    refrescarListaDeEventos();
                 }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
@@ -172,12 +173,6 @@ public class EventosFragment extends Fragment {
 
         return view;
     }
-
-   /* @Override
-    protected void onResume() {
-        super.onResume();
-        refrescarListaDeEdificios();
-    }*/
 
     private void refrescarListaDeEventos() {
         if (adaptadorEventos == null) return;

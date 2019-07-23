@@ -12,21 +12,7 @@
             android:id="@+id/edificios"
             android:icon="@drawable/ic_edificios"
             android:title="Edificios" />
-        <item
-            android:id="@+id/mapageneral"
-            android:icon="@drawable/ic_mapas"
-            android:title="Mapa General" />
-
     </group>
-
-    <item android:title="Aplicacion">
-        <menu>
-            <item
-                android:id="@+id/sincronizar"
-                android:icon="@drawable/ic_sincronizar"
-                android:title="Sincronizar" />
-        </menu>
-    </item>
     <item android:title="Datos">
         <menu>
             <item

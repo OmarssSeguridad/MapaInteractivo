@@ -1,27 +1,25 @@
 package com.example.mapainteractivo;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mapainteractivo.Controllers.EventoController;
+import com.example.mapainteractivo.Controllers.UsuarioController;
 import com.example.mapainteractivo.Modelos.Eventos;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.Random;
-
 
 public class AgregarEventoFragment extends Fragment {
 
@@ -32,7 +30,9 @@ public class AgregarEventoFragment extends Fragment {
 
     private EventoController controller;
     private Eventos evento;
-    private int min = 1, max = 100;
+
+    private View focusView = null;
+    private EditText[] campos;
 
     public AgregarEventoFragment() {
         // Required empty public constructor
@@ -53,6 +53,12 @@ public class AgregarEventoFragment extends Fragment {
         acept = view.findViewById(R.id.eventos_aceptar);
         cancel = view.findViewById(R.id.eventos_cancelar);
 
+        campos = new EditText[4];
+        campos[0] = name;
+        campos[1] = description;
+        campos[2] = start;
+        campos[3] = end;
+
         Bundle arguments = getArguments();
 
         if (arguments != null) {
@@ -63,44 +69,61 @@ public class AgregarEventoFragment extends Fragment {
             end.setText(arguments.getString("end", ""));
             acept.setText("Guardar");
         } else {
-            id = String.valueOf(new Random().nextInt(max-min+1)+min);
+            id = new GenerateId().getId();
         }
 
         FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.contenedor, new EventosFragment());
 
         acept.setOnClickListener(view1 -> {
-            String nombre = name.getText().toString();
-            String descripcion = description.getText().toString();
-            String inicio = start.getText().toString();
-            String fin = end.getText().toString();
+            if (isEmpty(campos)) {
+                focusView.requestFocus();
+            } else {
+                String nombre = name.getText().toString();
+                String descripcion = description.getText().toString();
+                String inicio = start.getText().toString();
+                String fin = end.getText().toString();
 
-            evento = new Eventos();
-            evento.setId(id);
-            evento.setNombre(nombre);
-            evento.setDesc(descripcion);
-            evento.setFechaI(inicio);
-            evento.setFechaF(fin);
+                evento = new Eventos();
+                evento.setId(id);
+                evento.setNombre(nombre);
+                evento.setDesc(descripcion);
+                evento.setFechaI(inicio);
+                evento.setFechaF(fin);
 
-            String boton = acept.getText().toString().toLowerCase();
-            long rl; int ri;
-            if (boton.equals("aceptar")) {
-                rl = controller.nuevoEvento(evento);
-                if (rl == -1) {
-                    Toast.makeText(view1.getContext(), "Ocurrío un error", Toast.LENGTH_SHORT).show();
-                } else {
-                    Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.contenedor, new EventosFragment()).commit();
-                }
-            } else if (boton.equals("guardar")) {
-                ri = controller.guardarCambios(evento);
-                if (ri != 1) {
-                    Toast.makeText(view1.getContext(), "Ocurrío un error", Toast.LENGTH_SHORT).show();
-                } else {
-                    Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.contenedor, new EventosFragment()).commit();
+                String boton = acept.getText().toString().toLowerCase();
+                long rl;
+                int ri;
+                if (boton.equals("aceptar")) {
+                    rl = controller.nuevoEvento(evento);
+                    if (rl == -1) {
+                        Toast.makeText(view1.getContext(), "Ocurrío un error", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.contenedor, new EventosFragment()).commit();
+                    }
+                } else if (boton.equals("guardar")) {
+                    ri = controller.guardarCambios(evento);
+                    if (ri != 1) {
+                        Toast.makeText(view1.getContext(), "Ocurrío un error", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.contenedor, new EventosFragment()).commit();
+                    }
                 }
             }
         });
 
         return view;
+    }
+
+    private boolean isEmpty(EditText[] campos) {
+        boolean cancel = false;
+        for (TextView campo : campos) {
+            if (TextUtils.isEmpty(campo.getText().toString())) {
+                campo.setError("Campo requerido");
+                focusView = campo;
+                cancel = true;
+            }
+        }
+        return cancel;
     }
 }

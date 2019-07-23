@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class EventoController {
 
     private FirebaseFirestore firestore = new FirebaseFirestore();
-    private DatabaseReference myRef;
 
     private BaseDatos ayudanteBaseDeDatos;
     private String NOMBRE_TABLA = "eventos";

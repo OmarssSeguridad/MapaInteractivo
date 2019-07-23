@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mapainteractivo.Controllers.UsuarioController;
 import com.example.mapainteractivo.Modelos.Usuarios;
-import com.example.mapainteractivo.firebase.FirebaseFirestore;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
-
-    Intent intent;
 
     EditText name;
     EditText username;
@@ -27,6 +23,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     Button registrar;
     TextView regreso;
+    Usuarios usuario;
+
+    private View focusView = null;
+    private EditText[] campos;
+    private UsuarioController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,32 +43,61 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         registrar = findViewById(R.id.btn_registrar);
         regreso.setOnClickListener(this);
         registrar.setOnClickListener(this);
+        controller = new UsuarioController(this);
+
+        campos = new EditText[4];
+        campos[0] = name;
+        campos[1] = username;
+        campos[2] = password;
+        campos[3] = enrollment;
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case  R.id.btn_registrar:
-                String nombre = name.getText().toString();
-                String user = username.getText().toString();
-                String contrasenia = password.getText().toString();
-                String matricula = enrollment.getText().toString();
+                if (isEmpty(campos)) {
+                    focusView.requestFocus();
+                } else {
+                    String nombre = name.getText().toString();
+                    String user = username.getText().toString();
+                    String contrasenia = password.getText().toString();
+                    String matricula = enrollment.getText().toString();
 
-                usuario = new Usuarios();
-                usuario.setNombre(nombre);
-                usuario.setUsuario(user);
-                usuario.setContrasenia(contrasenia);
-                usuario.setTipoUsuario("0");
-                usuario.setMatricula(matricula);
+                    usuario = new Usuarios();
+                    usuario.setId(new GenerateId().getId());
+                    usuario.setNombre(nombre);
+                    usuario.setUsuario(user);
+                    usuario.setContrasenia(contrasenia);
+                    usuario.setTipoUsuario("0");
+                    usuario.setMatricula(matricula);
 
-                Toast.makeText(this, "MenuActivity Principal", Toast.LENGTH_SHORT).show();
-                intent = new Intent((view.getContext()), Menu.class);
-                startActivity(intent);
+                    long rl = controller.nuevoUsuario(usuario);
+                    if (rl == -1) {
+                        Toast.makeText(this, "Ocurríó un error, inténtelo de nuevo", Toast.LENGTH_SHORT).show();
+                    } else if (rl == 0) {
+                        Toast.makeText(this, "Posible duplicación de matrícula, inténtelo de nuevo", Toast.LENGTH_LONG).show();
+                    } else if (rl == 1) {
+                        finish();
+                        startActivity(new Intent(Registro.this, MenuActivity.class));
+                    }
+                }
+                break;
             case R.id.regresoLogin:
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
-                intent = new Intent(view.getContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
                 break;
         }
+    }
+
+    private boolean isEmpty(EditText[] campos) {
+        boolean cancel = false;
+        for (TextView campo : campos) {
+            if (TextUtils.isEmpty(campo.getText().toString())) {
+                campo.setError("Campo requerido");
+                focusView = campo;
+                cancel = true;
+            }
+        }
+        return cancel;
     }
 }
