@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -22,6 +23,7 @@ import java.util.Objects;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +99,25 @@ public class MenuActivity extends AppCompatActivity
             fragmento = new PerfilFragment();
 
         }  else if (id == R.id.version) {
-            setTitle("Version");
-            fragmento = new VersionFragment();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+            builder.setTitle("Versión");
+            builder.setMessage("La versión es 1.0");
+            builder.setPositiveButton("OK",null);
+            builder.create();
+            builder.show();
 
         }  else if (id == R.id.acerca) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+            builder.setTitle("Creditos");
+            builder.setMessage("Desarrollo de aplicaciones móviles" +
+                    "\nIntegrantes" +
+                    "\nOmar Blanco Macedo" +
+                    "\nJosé Adán Cruz Castrejón" +
+                    "\nLourdes Cecilia Vega Mondragon" +
+                    "\nProfesora: Rocio Elizabeth Pulido Alba");
+            builder.setPositiveButton("OK",null);
+            builder.create();
+            builder.show();
 
         }
 
